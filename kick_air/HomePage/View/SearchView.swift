@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.dismiss) var dismiss
     @State private var searchText: String = ""
+    @State private var isSearching = false
     
     // Selected filters
     @State private var selectedDeliveryTime: String = "10-15 min"
@@ -29,21 +30,34 @@ struct SearchView: View {
 
     var body: some View {
         VStack {
-            HStack {
-
-                TextField("Search for restaurants, dishes...", text: $searchText)
-                    .padding(10)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-
-                Button(action: { 
-                    searchText = "";
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.gray)
+            HStack{
+                HStack {
+                    TextField("Search for restaurants, dishes...", text: $searchText)
+                        .padding(10)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .onChange(of: searchText) { newValue in
+                            // Update isSearching when searchText is not empty
+                            isSearching = !newValue.isEmpty
+                        }
+                    
+                    Spacer()
+                }
+                .padding()
+                
+                if isSearching {
+                    Button(action: {
+                        searchText = ""  // Clear search text
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .background(Color.red)
+                            .clipShape(Circle())
+                    }
+                    .padding(.trailing, 10)
                 }
             }
-            .padding()
 
             // Category Filters
             ScrollView(.horizontal, showsIndicators: false) {

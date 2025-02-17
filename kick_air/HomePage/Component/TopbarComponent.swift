@@ -49,9 +49,7 @@ struct TopbarComponent: View {
                     Menu {
                         
                         // Navigate to History View (You can add a HistoryView if needed)
-                        Button(action: {
-                            print("History selected")
-                        }) {
+                        NavigationLink(destination: OrderHistory()){
                             Label("History", systemImage: "clock")
                         }
                         
@@ -60,7 +58,7 @@ struct TopbarComponent: View {
                             Label("Wishlist", systemImage: "heart")
                         }
                         //Navigate to FoodDetailView
-                        NavigationLink(destination: FoodDetailView(food: FoodItem(name: "Sample", imageName: "sampleImage", restaurantLogo: "sampleLogo", price: "10.00", deliveryTime: "30-40 min", discount: "-10%"), cartViewModel: cartViewModel)) {
+                        NavigationLink(destination: FoodDetailView(food: FoodItem(name: "Sample", imageName: "berger", restaurantLogo: "sampleLogo", price: "10.00", deliveryTime: "30-40 min", discount: "-10%"), cartViewModel: cartViewModel)) {
                             Label("Orders", systemImage: "list.bullet")
                         }
                     } label: {
@@ -77,6 +75,12 @@ struct TopbarComponent: View {
     }
 }
 
+struct OrderHistory: View {
+    var body: some View {
+        Text("Order History")
+        //Create New row order that store in here
+    }
+}
 
 #Preview {
     TopbarComponent(cartViewModel: CartViewModel(), selectedTab: .constant(.home))
