@@ -28,6 +28,7 @@ struct NotificationItemComponent: View {
                 Text(notification.message)
                     .font(.system(size: 15))
                     .foregroundColor(.gray.opacity(0.8))
+                    .lineLimit(1)
 
                 HStack{
                     Text(notification.food)

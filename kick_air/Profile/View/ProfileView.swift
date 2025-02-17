@@ -70,6 +70,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            .listSectionSeparator(.hidden)
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Profile")
         }

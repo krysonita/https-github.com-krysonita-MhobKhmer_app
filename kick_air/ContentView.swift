@@ -1,24 +1,20 @@
-//
-//  ContentView.swift
-//  kick_air
-//
-//  Created by Kry Sonita on 07/02/2025.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @Binding var selectedTab: Tab
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                WelcomeView(selectedTab: $selectedTab)
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        @State var selectedTab: Tab = .home
+        return ContentView(selectedTab: $selectedTab)
+    }
 }

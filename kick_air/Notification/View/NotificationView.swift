@@ -47,7 +47,9 @@ struct NotificationView: View {
                         }
                         .padding(.leading, 16)
                         
-                        Button(action: {}) {
+                        Button(action: {
+                            
+                        }) {
                             Text("Unread")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.white)
