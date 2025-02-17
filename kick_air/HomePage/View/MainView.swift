@@ -40,7 +40,7 @@ struct MainView: View {
                         }
                         .tag(Tab.wishlist)
                     // Notification Page View
-                    NotificationView()
+                    NotificationView(notifications: NotificationItem)
                         .tabItem {
                             Image(systemName: "bell")
                             Text("Notification")

@@ -28,5 +28,6 @@ let NotificationItem = [
     NotificationModel(image: "berger",title: "New Order", message: "You have a new order", food: "Burger",time: Date(timeIntervalSinceNow: -30), isRead: true, dateString: "27 Feb 2025"),
     NotificationModel(image: "pizza",title: "Payment Received", message: "Payment received for your order", food: "Pizza",time: Date(timeIntervalSinceNow: -60), isRead: false, dateString: "26 Feb 2025"),
     NotificationModel(image: "wing_chic1",title: "Order Shipped", message: "Your order has been shipped", food: "Hotpot", time: Date(timeIntervalSinceNow: -120), isRead: true, dateString: "25 Feb 2025"),
-    NotificationModel(image: "berger",title: "New Order", message: "You have a new order", food: "Burger",time: Date(timeIntervalSinceNow: -50), isRead: true, dateString: "24 Feb 2025")
+    NotificationModel(image: "berger",title: "New Order", message: "You have a new order", food: "Burger",time: Date(timeIntervalSinceNow: -50), isRead: true, dateString: "24 Feb 2025"),
+    NotificationModel(image: "berger",title: "Delivery Completed", message: "You have a new order", food: "Burger",time: Date(timeIntervalSinceNow: -50), isRead: true, dateString: "28 Feb 2025")
 ]

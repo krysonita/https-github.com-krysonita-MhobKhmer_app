@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct NotificationView: View {
-    @State private var notifications: [NotificationModel] = NotificationItem
+    @StateObject private var viewModel: NotificationViewModel
+    
+    init(notifications: [NotificationModel]) {
+        _viewModel = StateObject(wrappedValue: NotificationViewModel(notifications: notifications))
+    }
     
     var sortedNotifications: [NotificationModel] {
-        notifications.sorted {
+        viewModel.filteredNotifications.sorted {
             guard let date1 = $0.date, let date2 = $1.date else { return false }
             return date1 > date2
         }
@@ -37,36 +41,40 @@ struct NotificationView: View {
                     
                     // Filter Buttons
                     HStack {
-                        Button(action: {}) {
+                        Button(action: {
+                            viewModel.filter = .all
+                        }) {
                             Text("All")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.white)
                                 .padding(10)
-                                .background(Color.red)
+                                .background(viewModel.filter == .all ? Color.red : Color.gray.opacity(0.5))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         .padding(.leading, 16)
                         
                         Button(action: {
-                            
+                            viewModel.filter = .unread
                         }) {
                             Text("Unread")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.white)
                                 .padding(10)
-                                .background(Color.red)
+                                .background(viewModel.filter == .unread ? Color.red : Color.gray.opacity(0.5))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         
                         Spacer()
                         
                         Button(action: {
-                            markAllAsRead()
+                            viewModel.markAllAsRead()
                         }) {
-                            Text("Read All")
+                            Text("ReadAll")
                                 .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.red)
+                                .foregroundColor(.white)
                                 .padding(10)
+                                .background(viewModel.filter == .read ? Color.red : Color.gray.opacity(0.5))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         .padding(.horizontal)
                     }
@@ -93,19 +101,9 @@ struct NotificationView: View {
             }
             .navigationBarHidden(true)
         }
-        
-    }
-    // Function to mark all notifications as read
-    private func markAllAsRead() {
-        notifications = notifications.map { notification in
-            var updatedNotification = notification
-            updatedNotification.isRead = false
-            return updatedNotification
-        }
     }
 }
 
-
 #Preview{
-    NotificationView()
+    NotificationView(notifications: NotificationItem)
 }
