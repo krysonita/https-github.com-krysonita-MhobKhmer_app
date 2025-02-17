@@ -13,6 +13,7 @@ struct SignUpView: View {
     @State private var password: String = ""
     @State private var rememberMe: Bool = false
     @State private var isSignedUp: Bool = false
+    @State private var isLoggedIn: Bool = false
     @Binding var selectedTab : Tab
     
 
@@ -97,6 +98,7 @@ struct SignUpView: View {
                             .font(.system(size: 18))
                         Button(action: {
                             //login
+                            isLoggedIn.toggle()
                         }) {
                             Text("Login")
                                 .foregroundColor(.red)
@@ -105,6 +107,10 @@ struct SignUpView: View {
                     }
                     .padding()
                     NavigationLink(destination:LoginView(selectedTab: $selectedTab).navigationBarBackButtonHidden(true), isActive: $isSignedUp) {
+                            EmptyView()
+                        }
+                    .hidden()
+                    NavigationLink(destination:LoginView(selectedTab: $selectedTab).navigationBarBackButtonHidden(true), isActive: $isLoggedIn) {
                             EmptyView()
                         }
                     .hidden()
