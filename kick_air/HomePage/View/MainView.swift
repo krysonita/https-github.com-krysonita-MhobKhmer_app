@@ -2,7 +2,7 @@ import SwiftUI
 
 enum Tab {
     case home
-    case search
+//    case search
     case wishlist
     case notification
     case profile
@@ -24,13 +24,13 @@ struct MainView: View {
                         }
                         .tag(Tab.home)
                     
-                    // Search Page View
-                    SearchView()
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                            Text("Search")
-                        }
-                        .tag(Tab.search)
+//                    // Search Page View
+//                    SearchView()
+//                        .tabItem {
+//                            Image(systemName: "magnifyingglass")
+//                            Text("Search")
+//                        }
+//                        .tag(Tab.search)
 
                     // Wishlist Page View
                     WishlistView(selectedTab: $selectedTab, cartViewModel: CartViewModel())

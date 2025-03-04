@@ -36,11 +36,33 @@ struct HomePageView: View {
                         SearchBarComponent(searchText: $searchText)
                         CategoriesComponent()
 
-                        SectionHeader(title: "Trending items")
-                        ScrollableFoodListView(foodItems: filteredTrendingItems, cartViewModel: cartViewModel)
+//                        SectionHeader(title: "Trending items", hasNodata: true)
+//                        ScrollableFoodListView(foodItems: filteredTrendingItems, cartViewModel: cartViewModel)
+//
+//                        SectionHeader(title: "Featured items", hasNodata: true)
+//                        ScrollableFoodListView(foodItems: filteredFeaturedItems, cartViewModel: cartViewModel)
+                        SectionHeader(title: "Trending items", hasNodata: filteredTrendingItems.isEmpty)
+                        if filteredTrendingItems.isEmpty {
+                            Text("No data found")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                        } else {
+                            ScrollableFoodListView(foodItems: filteredTrendingItems, cartViewModel: cartViewModel)
+                        }
 
-                        SectionHeader(title: "Featured items")
-                        ScrollableFoodListView(foodItems: filteredFeaturedItems, cartViewModel: cartViewModel)
+                        SectionHeader(title: "Featured items", hasNodata: filteredFeaturedItems.isEmpty)
+                        if filteredFeaturedItems.isEmpty {
+                            Text("No data found")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                        } else {
+                            ScrollableFoodListView(foodItems: filteredFeaturedItems, cartViewModel: cartViewModel)
+                        }
+
                     }
                     .padding(.horizontal)
                 }

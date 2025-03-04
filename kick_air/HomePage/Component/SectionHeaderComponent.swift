@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SectionHeader: View {
     var title: String
+    var hasNodata: Bool
     
     var body: some View {
         HStack {

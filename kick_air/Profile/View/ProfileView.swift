@@ -49,13 +49,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                // Offers Section
-                Section(header: Text("Offers").font(.headline)) {
-                    NavigationLink(destination: CouponsView()) {
-                        ProfileMenuItem(icon: "ticket", title: "All Coupons")
-                    }
-                }
-                
                 // Security Section
                 Section(header: Text("Security").font(.headline)) {
                     NavigationLink(destination: ChangePasswordView()) {
@@ -77,13 +70,6 @@ struct ProfileView: View {
     }
 }
 
-struct EditProfileView: View {
-    var body: some View {
-        Text("Edit Profile Page").font(.title)
-            .navigationTitle("Edit Profile")
-    }
-}
-
 struct OrderHistoryView: View {
     var body: some View {
         Text("Order History Page").font(.title)
@@ -95,13 +81,6 @@ struct ShippingDetailsView: View {
     var body: some View {
         Text("Shipping Details Page").font(.title)
             .navigationTitle("Shipping Details")
-    }
-}
-
-struct CouponsView: View {
-    var body: some View {
-        Text("All Coupons Page").font(.title)
-            .navigationTitle("All Coupons")
     }
 }
 
