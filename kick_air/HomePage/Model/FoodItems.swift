@@ -29,4 +29,24 @@ let featuredItems = [
     FoodItem(name: "Wing Chicken McDonalds", imageName: "food1", restaurantLogo: "burgerking", price: "45.00", deliveryTime: "25-30 min", discount: "-15%")
 ]
 
+// MARK: - Section Type
+
+enum FoodSectionType: CaseIterable {
+    case trending
+    case featured
+    
+    var title: String {
+        switch self {
+        case .trending: return "Trending Items"
+        case .featured: return "Featured Items"
+        }
+    }
+    
+    var items: [FoodItem] {
+        switch self {
+        case .trending: return trendingItems
+        case .featured: return featuredItems
+        }
+    }
+}
 

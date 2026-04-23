@@ -43,6 +43,6 @@ struct OrderCardsComponent: View {
     }
 }
 
-#Preview {
-    OrderCardsComponent(order: OrderList(name: "Order1", status: "Pending", hour: "2h"))
-}
+//#Preview {
+//    OrderCardsComponent(order: OrderList(name: "Order1", status: "Pending", hour: "2h"))
+//}
